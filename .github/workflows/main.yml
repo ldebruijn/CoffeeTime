@@ -28,6 +28,6 @@ jobs:
         password: ${{ secrets.registryPassword }}
         registry: registry.gitlab.com
         repository: registry.gitlab.com/larsdebruijn/coffeetime
-        dockerfile: /
+        path: /
         tag_with_sha: true
         tags: latest
