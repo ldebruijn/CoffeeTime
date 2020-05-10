@@ -1,6 +1,6 @@
 # Coffeetime
 
-**TODO: Add description**
+An app that uses the Webhook mechanism of Google to post a notification in the morning with a random Giphy in order to stimulate the 'Coffeetime' we had back when we could work in the office pre-corona times
 
 ## Installation
 
