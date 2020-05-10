@@ -1,5 +1,4 @@
 # This is a basic workflow to help you get started with Actions
-
 name: CI
 
 # Controls when the action will run. Triggers the workflow on push or pull request
@@ -29,3 +28,6 @@ jobs:
         password: ${{ secrets.registryPassword }}
         registry: registry.gitlab.com
         repository: registry.gitlab.com/larsdebruijn/coffeetime
+        dockerfile: /
+        tag_with_sha: true
+        tags: latest
