@@ -31,9 +31,14 @@ jobs:
         architecture: armv7
         distribution: ubuntu18.04
         run: |
+          # Set locale of VM to UTF8
+          env LC_ALL=en_US.UTF-8 
+          export LC_ALL
+          
           apt update
           apt install -y wget
           wget https://packages.erlang-solutions.com/erlang-solutions_2.0_all.deb && dpkg -i erlang-solutions_2.0_all.deb
+          apt update
           apt install -y elixir
 
           export MIX_ENV=prod
