@@ -24,11 +24,6 @@ FROM elixir:alpine
 WORKDIR /srv/app/coffeetime
 
 # Copy and extract .tar.gz Release file from the previous stage
-COPY --from=builder /srv/app/coffeetime/_build/prod/rel/coffeetime/bin/coffeetime .
+COPY --from=builder /srv/app/coffeetime/_build/prod/rel/coffeetime .
 
-# Change user
-USER default
-
-# Set default entrypoint and command
-ENTRYPOINT ["/opt/app/bin/MY_APP_NAME"]
-CMD ["foreground"]
+CMD ["bin/coffeetime", "start"]
