@@ -18,16 +18,22 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
-
-    - name: Build and push Docker images
-      uses: docker/build-push-action@v1.1.0
+    - name: Login to DockerHub Registry
+      run: echo ${{ secrets.registryPassword }} | docker login -u ${{ secrets.registryUsername }} --password-stdin
+    - name: Get the version
+      id: vars
+      run: echo ::set-output name=tag::$(echo ${GITHUB_REF:10})
+    - name: Build the tagged Docker image
+      run: docker build . --file Dockerfile --tag larsdebruijn/coffeetime:${{steps.vars.outputs.tag}}
+    - name: Push the tagged Docker image
+      run: docker push larsdebruijn/coffeetime:${{steps.vars.outputs.tag}}
+    - name: Build the latest Docker image
+    - uses: uraimo/run-on-arch-action@v1.0.8
+      id: docker-build
       with:
-        username: ${{ secrets.registryUsername }}
-        password: ${{ secrets.registryPassword }}
-        registry: registry.gitlab.com
-        repository: larsdebruijn/coffeetime
-        dockerfile: Dockerfile
-        tag_with_sha: true
-        tags: latest
+        architecture: armv7
+        distribution: ubuntu18.04
+        run: |
+          docker build . --file Dockerfile --tag larsdebruijn/coffeetime:latest
+          docker push larsdebruijn/coffeetime:latest

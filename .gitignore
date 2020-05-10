@@ -25,5 +25,8 @@ coffeetime-*.tar
 # Ignore directory used by Visual Studio Code plugin
 .elixir_ls/
 
+# Kubernetes deployment since it will contain environment variables
+k8s/
+
 # Local file to easily run application, contains env variables that shouldn't be commited to the repo
 run.sh
