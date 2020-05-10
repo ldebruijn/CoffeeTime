@@ -31,6 +31,11 @@ jobs:
         architecture: armv7
         distribution: ubuntu18.04
         run: |
+          # install elixir
+          wget https://packages.erlang-solutions.com/erlang-solutions_2.0_all.deb && sudo dpkg -i erlang-solutions_2.0_all.deb
+          apt-get -y update
+          apt-get -y install esl-erlang
+
           export MIX_ENV=prod
           mix local.hex --force
           mix local.rebar --force
