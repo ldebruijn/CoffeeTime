@@ -25,9 +25,9 @@ jobs:
       id: vars
       run: echo ::set-output name=tag::$(echo ${GITHUB_REF:10})
     - name: Build the tagged Docker image
-      run: docker build . --file Dockerfile --tag larsdebruijn/coffeetime:${{steps.vars.outputs.tag}}
+      run: docker build . --file Dockerfile --tag larsdebruijn/coffeetime:latest
     - name: Push the tagged Docker image
-      run: docker push larsdebruijn/coffeetime:${{steps.vars.outputs.tag}}
+      run: docker push larsdebruijn/coffeetime:latest
     - uses: uraimo/run-on-arch-action@v1.0.8
       name: Build the latest Docker image
       id: docker-build
