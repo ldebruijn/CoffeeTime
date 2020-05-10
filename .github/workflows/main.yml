@@ -27,7 +27,7 @@ jobs:
     - name: Build the tagged Docker image
       run: docker build . --file Dockerfile --tag larsdebruijn/coffeetime:latest
     - name: Push the tagged Docker image
-      run: docker push larsdebruijn/coffeetime:latest
+      run: docker push registry.gitlab.com/larsdebruijn/coffeetime:latest
     - uses: uraimo/run-on-arch-action@v1.0.8
       name: Build the latest Docker image
       id: docker-build
