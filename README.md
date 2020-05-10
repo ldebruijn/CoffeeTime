@@ -23,43 +23,57 @@ be found at [https://hexdocs.pm/coffeetime](https://hexdocs.pm/coffeetime).
 
 Install dependencies by executing
 
+```
   mix.deps.get
+```
 
 ## Running locally
 
+```
   CT_GIPHY_API_KEY= \
   CT_GCHAT_KEY= \
   CT_GCHAT_TOKEN= \
   CT_GCHAT_ROOM_KEY= \
   CT_CHAT_ROOM= \
   mix run --config config/releases.exs
+```
 
 ## Building a release
 
+```
   MIX_ENV=prod mix release
+```
 
 ## Running a release
 
 Pass the required environment variables to the process when starting it, i.e.
 
+```
   CT_GIPHY_API_KEY= \
   CT_GCHAT_KEY= \
   CT_GCHAT_TOKEN= \
   CT_GCHAT_ROOM_KEY= \
   CT_CHAT_ROOM= \
   T_KEY_build/prod/rel/coffeetime/bin/coffeetime start
+```
 
 
 ## Starting interactive session
 
 Start an interactive terminal session by executing
 
+```
   iex -S mix
+```
 
 When making changes, recompile the changes by entering the following in the shell
 
+```
   recompile()
+```
 
 And run the program with
 
+```
   CoffeeTime.start()
+```
