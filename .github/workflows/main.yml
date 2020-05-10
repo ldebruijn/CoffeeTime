@@ -31,10 +31,10 @@ jobs:
         architecture: armv7
         distribution: ubuntu18.04
         run: |
-          # install elixir
-          apt-get -y install wget
+          apt update
+          apt install -y wget
           wget https://packages.erlang-solutions.com/erlang-solutions_2.0_all.deb && dpkg -i erlang-solutions_2.0_all.deb
-          apt-get -y install elixir
+          apt install -y elixir
 
           export MIX_ENV=prod
           mix local.hex --force
