@@ -1,0 +1,25 @@
+language: elixir
+
+elixir:
+  - '1.10.3'
+
+arch:
+    - arm64
+
+stages:
+    - build_publish
+
+sudo: false
+before_script:
+    - mix deps.get
+
+env:
+    global:
+        - MIX_ENV=prod
+jobs:
+    include:
+        - stage: build_publish
+          script:
+            - echo "$DOCKER_PASSWORD" | docker login registry.gitlab.com -u "$DOCKER_USERNAME" --password-stdin
+            - docker build -t registry.gitlab.com/larsdebruijn/coffeetime:latest .
+            - docker push registry.gitlab.com/larsdebruijn/coffeetime:latest
