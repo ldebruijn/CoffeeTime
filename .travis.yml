@@ -8,12 +8,6 @@ services:
 stages:
     - build_publish
 
-before_script:
-    - mix deps.get
-
-env:
-    global:
-        - MIX_ENV=prod
 jobs:
     include:
         - stage: build_publish
