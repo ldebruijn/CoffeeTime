@@ -69,8 +69,7 @@ defmodule CoffeeTime do
 
     params = %{
       key: Application.fetch_env!(:coffeetime, :gchat_webhook_key),
-      token: Application.fetch_env!(:coffeetime, :gchat_webhook_token),
-      threadKey: "cofee"
+      token: Application.fetch_env!(:coffeetime, :gchat_webhook_token)
     }
 
     IO.inspect params
