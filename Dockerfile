@@ -1,5 +1,5 @@
 ### Builder stage
-FROM arm64v8/elixir:alpine AS builder
+FROM elixir:alpine AS builder
 
 # Copy the source folder into the Docker image
 COPY . /srv/app/coffeetime
@@ -18,7 +18,7 @@ RUN rm -rf _build && \
     mix release
 
 ### Deployment stage
-FROM arm64v8/elixir:alpine
+FROM elixir:alpine
 
 # Set working dir
 WORKDIR /srv/app/coffeetime
