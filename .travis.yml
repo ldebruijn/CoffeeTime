@@ -4,13 +4,14 @@ elixir:
     - '1.10.3'
 otp_release:
     - '20.0'
-arch:
-    - arm64
+
+os: linux 
+arch: arm64 
+dist: bionic
 
 stages:
     - build_publish
 
-sudo: false
 before_script:
     - mix deps.get
 
